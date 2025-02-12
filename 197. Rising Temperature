@@ -1,0 +1,13 @@
+with cte as
+(
+select id,
+       temperature as current_temp,
+       lag(temperature) over (order by recorddate) as previous_temp,
+       recordDate as current_day,
+       date_sub(recordDate, interval 1 day) as previous_day
+from Weather
+)
+select id as Id
+from cte
+where current_temp > previous_temp
+and previous_day in (select current_day from cte)
