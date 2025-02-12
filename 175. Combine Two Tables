@@ -1,3 +1,5 @@
+https://lnkd.in/dumdCXC7
+
 select p.firstname as firstName,
        p.lastname as lastName,
        a.city as city,
