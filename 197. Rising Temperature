@@ -11,3 +11,13 @@ select id as Id
 from cte
 where current_temp > previous_temp
 and previous_day in (select current_day from cte)
+
+------------------X--------------------------
+
+
+
+select w1.Id
+from weather w1
+join weather w2
+on w1.temperature > w2.temperature
+and date_sub(w1.recordDate, interval 1 day) = w2.recordDate
