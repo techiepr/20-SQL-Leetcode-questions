@@ -1,0 +1,19 @@
+with cte as
+(
+select s1.name as sale_name,
+       o1.com_id,
+       c1.name as com_name
+from salesperson s1
+left join orders o1
+on s1.sales_id = o1.sales_id
+left join company c1
+on o1.com_id = c1.com_id
+), cte1 as 
+(
+select sale_name 
+from cte
+where com_name = 'RED'
+)
+select distinct sale_name as name
+from cte
+where sale_name not in (select sale_name from cte1)
