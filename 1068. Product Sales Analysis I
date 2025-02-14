@@ -1,0 +1,14 @@
+with cte as
+(
+select p1.product_name,
+       s1.year,
+       s1.price,
+       s1.sale_id
+from sales s1
+left join product p1
+on s1.product_id = p1.product_id
+)
+select product_name,
+       year,
+       price
+from cte
